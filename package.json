@@ -2,6 +2,8 @@
   "name": "tp2_proyecto",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
+
   "scripts": {
     "start": "node .",
     "dev": "node --watch .",

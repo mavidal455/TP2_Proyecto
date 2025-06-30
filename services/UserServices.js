@@ -1,5 +1,5 @@
-import User from "../models/index";
-import { validarUserById } from "../middlewares/validarUserById";
+import {User } from "../models/index.js";
+import { validarUserById } from "../middlewares/validarUserById.js";
 
 class UserServices {
   getAllUserServices = async () => {

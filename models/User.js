@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import connection from "../connection/connnection";
+import connection from "../connection/connection.js";
 // import bcript
 
 class User extends Model {}
@@ -29,4 +29,4 @@ User.init(
 );
 
 
-export default User
+export default User;

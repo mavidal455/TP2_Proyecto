@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended:true}))
 
 app.use(routes)
 
-await connection.sync({force:true})
+await connection.sync({force:false})
 
 app.listen(SERVER_PORT, ()=>{
      console.log(`🚀 ~ app.listen ~ ${SERVER_PORT}`)
