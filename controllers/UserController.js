@@ -4,7 +4,9 @@ class UserController {
   userServices = new UserServices();
 
   getAllUserController = async (req, res) => {
+          console.log("get all users")
     try {
+
       const users = this.userServices.getAllUserServices();
       if (!users) {
         res.status(204).send("No hay usuarios en el servidor");
@@ -25,10 +27,14 @@ class UserController {
       res.status(500).send("Error del servidor");
     }
   };
+
+
   //app.post
   postUserController = async (req, res) => {
     try {
-      const nuevoUser = this.userServices.postUserService(req.params);
+      console.log(req.params)
+      console.log('body: ',req.body)
+      const nuevoUser = await this.userServices.postUserService(req.body);
       if (!nuevoUser) {
         res.status(204).send("No se pudo agregar el usuario");
       }

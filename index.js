@@ -13,6 +13,6 @@ app.use(routes)
 
 await connection.sync({force:false})
 
-app.listen(SERVER_PORT, ()=>{
-     console.log(`🚀 ~ app.listen ~ ${SERVER_PORT}`)
+app.listen(8080, ()=>{
+     console.log(`🚀 ~ app.listen ~ ${8080}`)
 })

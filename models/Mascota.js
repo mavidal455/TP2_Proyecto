@@ -1,4 +1,4 @@
-import { DataTypes, Sequelize, } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import connection from "../connection/connection.js";
 
 
@@ -25,7 +25,7 @@ class Mascota extends Model {}
         },
 
         {
-            Sequelize: connection,
+            sequelize: connection,
             modelName: "Mascota",
         }
     );

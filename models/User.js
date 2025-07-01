@@ -11,11 +11,13 @@ User.init(
       allowNull: false,
     },
     mail: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false,
       mail: true,
     },
+    
     number: DataTypes.INTEGER,
+
     password: {
       type: DataTypes.STRING,
       allowNull: false,

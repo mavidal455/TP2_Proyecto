@@ -14,9 +14,10 @@ class UserServices {
   };
 
   postUserService = async (data) => {
-    existeUsuario;
-    const { id, name, mail, number, password } = await User.create(data);
-    return { id, name, mail, number, password };
+    // existeUsuario;
+    const user = await User.create(data);
+    console.log(user)
+    return user;
 
     // Hacer login
   };
