@@ -1,8 +1,13 @@
 import { DataTypes, Model } from "sequelize";
 import connection from "../connection/connection.js";
-// import bcript
+import bcrypt from "bcrypt";
 
-class User extends Model {}
+class User extends Model {
+  compare = async (plaintextPassword) => {
+    const comparePass = await bcrypt.compare(plaintextPassword, this.password);
+    return comparePass;
+  };
+}
 
 User.init(
   {
@@ -30,5 +35,10 @@ User.init(
   }
 );
 
+User.beforeCreate(async(user) => {
+  const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hash(user.password, salt);
+  user.password = hash;
+});
 
 export default User;
