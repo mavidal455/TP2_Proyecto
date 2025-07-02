@@ -1,5 +1,5 @@
 import { User } from "../models/index.js";
-import { generateToken, verifyToken } from "../utils/jwt.js"; // ✅ Agregar este import
+import { generateToken, verifyToken } from "../utils/jwt.js"; 
 
 class UserServices {
   getAllUserServices = async () => {

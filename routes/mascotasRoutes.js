@@ -1,12 +1,14 @@
 import { Router } from "express";
-import MascotasController from "../controllers/MascotasController";
+import MascotasController from "../controllers/MascotasController.js";
 
 
 const mascotasController = new MascotasController();
 const mascotasRouter = Router();
 
-mascotasRouter.get("/mascotas",mascotasController.getMascotasPorDuenioController);
-mascotasRouter.get("/mascotas/:id", mascotasController.mascotaInfo);
-mascotasRouter.post("/mascotas", mascotasController.postMascotaController);
-mascotasRouter.put("/mascotas/:id", mascotasController.putMascotaController);
-mascotasRouter.delete("/mascotas/:id",mascotasController.deleteMascotaController);
+mascotasRouter.get("/",mascotasController.getMascotasPorDuenioController);
+mascotasRouter.get("/:id", mascotasController.mascotaInfo);
+mascotasRouter.post("/", mascotasController.postMascotaController);
+mascotasRouter.put("/:id", mascotasController.putMascotaController);
+mascotasRouter.delete("/:id",mascotasController.deleteMascotaController);
+
+export default mascotasRouter;

@@ -1,13 +1,13 @@
-import MascotasServices from "../services/MascotasServices"
+import MascotasServices from "../services/MascotasServices.js"
 
 class MascotasController{
     mascotasServices = new MascotasServices();
 
     getMascotasPorDuenioController = async (req, res) => {
         try {
-          const mascotas = await this.mascotasServices.getAMascotasPorDuenioServices();
+          const mascotas = await this.mascotasServices.getAllMascotasServices();
           if (!mascotas) {
-            return res.status(204).json("No hay mascotas con ese duenio");
+            return res.status(204).json("No hay mascotas que mostrar");
           }
           return res.status(200).json({ success: true, message: mascotas });
 
@@ -15,8 +15,8 @@ class MascotasController{
             console.log(error);
         }
       };
-    
-      //mascotas get by id ✅
+
+    //mascotas.getById
     mascotaInfo = async (req, res) => {
       try {
         const mascota = await this.mascotasServices.getmMascotaInfoById(req.params.id);
@@ -31,12 +31,13 @@ class MascotasController{
       }
     };
     
-      //mascotas.post ✅
+      //mascotas.post
       postMascotaController = async (req, res) => {
+        console.log('entro al post')
         try {
           const mascota = await this.mascotasServices.getmMascotaInfoById(req.params.id)
           if (mascota) {
-            return res.status(204).send("El usuario ya existe")
+            return res.status(204).send("La mascota ya existe")
           }
           const nuevaMascota = await this.mascotasServices.postMascotaService(req.body);
           return res.status(200).json({ success: true, message: nuevaMascota });
@@ -46,15 +47,15 @@ class MascotasController{
         }
       };
     
-      //app.put
+      //mascotas.put
       putMascotaController = async (req, res) => {
         try {
-          const user = await this.userServices.getUserServiceById(req.params.id)
-          if (!user) {
+          const mascota = await this.mascotasServices.getmMascotaInfoById(req.params.id)
+          if (!mascota) {
             return res.status(404).json("No existe el usuario");
           }
-          const userModificado = await this.userServices.putUserServiceById(req.body, req.params.id);
-          return res.status(200).json({ success: true, message: userModificado });
+          const mascotaModificada = await this.mascotasServices.putMascotaService(req.body, req.params.id);
+          return res.status(200).json({ success: true, message: mascotaModificada });
     
         } catch (error) {
           return res.status(500).json("Error del servidor");
@@ -63,14 +64,15 @@ class MascotasController{
     
       //app.delete(deleteUserById)
       deleteMascotaController = async (req,res) => {
+        console.log('probando delete')
         try {
-            const usuarioEliminado = await this.userServices.deleteUserServiceById(req.params.id);
+            const mascotaEliminada = await this.mascotasServices.deleteMascotaServiceById(req.params.id);
     
-          if (!usuarioEliminado) {
-            return res.status(204).json("No se pudo eliminar el usuario");
+          if (!mascotaEliminada) {
+            return res.status(204).json("No se pudo eliminar la mascota");
           }
     
-          return res.status(200).json({ success: true, message: usuarioEliminado });
+          return res.status(200).json({ success: true, message: mascotaEliminada });
         } catch (error) {
           return res.status(500).json("Error del servidor");
         } 

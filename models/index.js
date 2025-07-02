@@ -4,10 +4,10 @@ import Mascota from "./Mascota.js";
 //Enlaza las tablas 
 
 User.hasMany(Mascota, {
-    foreignKey: "mascotaId"
+    foreignKey: "userId"
 })
 Mascota.belongsTo(User, {
-    foreignKey: "mascotaId"
+    foreignKey: "userId"
 })
 
 export {User, Mascota}

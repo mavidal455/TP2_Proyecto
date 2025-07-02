@@ -34,7 +34,6 @@ class UserController {
       const usuario = await this.userServices.getUserServiceById(req.params.id)
       if (usuario) {
         return res.status(204).send("El usuario ya existe")
-        return;
       }
       const nuevoUser = await this.userServices.postUserService(req.body);
 

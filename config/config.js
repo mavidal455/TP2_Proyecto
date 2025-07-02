@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const SERVER_PORT = process.env.SERVER_PORT || 8080;
-const SECRET = process.env.SECRET || "clave_por_defecto";
+const SECRET = process.env.SECRET || "clave_secreta";
 
 const DB_NAME = process.env.DB_NAME || "veterinaria";
 const DB_USER = process.env.DB_USER || "root";
